@@ -1,0 +1,21 @@
+.navbar .navbar-brand{
+    color: #E50914;
+    font-weight: bold;
+}
+.navbar-nav .nav-item .nav-link{
+    color: #E50914;
+    font-weight: bold;
+}
+
+.btn-search {
+    background-color:#E50914 ;
+    color:white
+}
+.btn-search:hover{
+    background-color:#7f0309 ;
+    color:white
+}
+
+p{
+    color: white;
+}

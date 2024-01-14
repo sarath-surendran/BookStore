@@ -1,0 +1,37 @@
+.carousel-inner{
+    height: 450px;
+}
+.carousel-inner .carousel-item img{
+ height:400px ;
+ object-fit: cover;
+} 
+
+.rowposter{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.rowing{
+    max-height: 100px;
+    object-fit: contain;
+    width:100%;
+    box-sizing:content-box ;
+    transition: tranform 450ms;
+    margin-right: 8px;
+}
+.rowing:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.largeposter{
+    max-height: 300px;
+
+
+}
+.rowposter::-webkit-scrollbar{
+    display:none;
+}
+
+p{
+    color: white;
+}
