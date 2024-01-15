@@ -8,7 +8,7 @@
         <div class="col-lg-10">
             <h1 class="mt-2 mb-2">{{bookDetails.title}}</h1>
             <p class="mt-3 mb-3" >{{bookDetails.subject_people[0]}}</p>
-            <p class="mt-3 mb-3" >Price : {{ bookDetails.revision > 100 ? bookDetails.revision : bookDetails.revision + 100 }}</p>
+            <p class="mt-3 mb-3" >Price : {{ bookDetails.revision > 100 ? bookDetails.revision : bookDetails.revision + 100 | currency: 'INR'}}</p>
             <p class="mt-3 mb-3" *ngIf="bookDetails.description">{{bookDetails.description}}</p>
             <button class="btn btn-md">Add to Cart</button>
         </div>
