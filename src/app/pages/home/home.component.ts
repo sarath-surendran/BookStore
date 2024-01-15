@@ -31,14 +31,14 @@ export class HomeComponent implements OnInit{
   }
   getArtBooks(){
     this.bookservice.getArt().subscribe({
-      next:(result)=>{console.log((result.items), "Artbooks#"); this.artBooks = result.works},
+      next:(result)=>{console.log((result.works), "Artbooks#"); this.artBooks = result.works},
       error:(error)=>{console.log(error, "Artbookerror#"); this.artBooks = []}
     })
   }
 
   getBusinessBooks(){
     this.bookservice.getBusiness().subscribe({
-      next:(result)=>{console.log((result.items), "Businessbooks#"); this.businessBooks = result.works},
+      next:(result)=>{console.log((result.works), "Businessbooks#"); this.businessBooks = result.works},
       error:(error)=>{console.log(error, "Businessbookerror#"); this.businessBooks = []}
     })
   }
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit{
 
   getScienceBooks(){
     this.bookservice.getScience().subscribe({
-      next:(result)=>{console.log((result.items), "Sciencebooks#"); this.scienceBooks = result.works},
+      next:(result)=>{console.log((result.works), "Sciencebooks#"); this.scienceBooks = result.works},
       error:(error)=>{console.log(error, "Sciencebookerror#"); this.scienceBooks = []}
     })
   }
