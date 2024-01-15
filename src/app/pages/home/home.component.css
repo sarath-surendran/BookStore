@@ -17,7 +17,7 @@
     width:100%;
     box-sizing:content-box ;
     transition: tranform 450ms;
-    margin-right: 8px;
+    margin-right: 18px;
 }
 .rowing:hover{
     transform: scale(1.1);
