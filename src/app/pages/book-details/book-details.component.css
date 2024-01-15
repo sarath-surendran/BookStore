@@ -1,0 +1,47 @@
+img{
+    width: 100%;
+    height: auto;
+}
+h1{
+    color: #ffffff;
+    font-weight: bold;
+}
+p{
+    color: #ffffff;
+}
+button{
+    background-color: #E50914;
+    color: #ffffff;
+    text-decoration: none;
+}
+button:hover{
+    background-color: #721519;
+    color: #ffffff;
+    text-decoration: none;
+    border:2px solid E50914;
+}
+.rowposter{
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.rowing{
+    max-height: 100px;
+    object-fit: contain;
+    width:100%;
+    box-sizing:content-box ;
+    transition: tranform 450ms;
+    margin-right: 18px;
+}
+.rowing:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.largeposter{
+    max-height: 300px;
+
+
+}
+.rowposter::-webkit-scrollbar{
+    display:none;
+}

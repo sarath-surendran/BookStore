@@ -29,6 +29,13 @@ export class HomeComponent implements OnInit{
     // this.getPsychologyBooks()
     // this.getMusicBooks()
   }
+  getFictionBooks(){
+    this.bookservice.getFiction().subscribe({
+      next:(result)=>{console.log((result.works), "fictionbooks#"); this.fictionBooks = result.works},
+      error:(error)=>{console.log(error, "fictionbookerror#"); this.fictionBooks = []}
+    })
+  }
+
   getArtBooks(){
     this.bookservice.getArt().subscribe({
       next:(result)=>{console.log((result.works), "Artbooks#"); this.artBooks = result.works},
@@ -78,12 +85,7 @@ export class HomeComponent implements OnInit{
   //   })
   // }
 
-  getFictionBooks(){
-    this.bookservice.getFiction().subscribe({
-      next:(result)=>{console.log((result.works), "fictionbooks#"); this.fictionBooks = result.works},
-      error:(error)=>{console.log(error, "fictionbookerror#"); this.fictionBooks = []}
-    })
-  }
+  
   
 
 }

@@ -1,0 +1,34 @@
+<div class="contain mt-5">
+    <div class="row =-5">
+        <div class="col-lg-2">
+            <img 
+            src="https://covers.openlibrary.org/b/id/{{ bookDetails.covers[0] }}-L.jpg" 
+            alt="">
+        </div>
+        <div class="col-lg-10">
+            <h1 class="mt-2 mb-2">{{bookDetails.title}}</h1>
+            <p class="mt-3 mb-3" >{{bookDetails.subject_people[0]}}</p>
+            <p class="mt-3 mb-3" >Price : {{ bookDetails.revision > 100 ? bookDetails.revision : bookDetails.revision + 100 }}</p>
+            <p class="mt-3 mb-3" *ngIf="bookDetails.description">{{bookDetails.description}}</p>
+            <button class="btn btn-md">Add to Cart</button>
+        </div>
+    </div>
+    <div class="row mt-5" >
+        <h4 class="text-white">Similar Books</h4>
+        <div class="rowposter mt-3 p-2">
+          <ng-container  *ngFor="let book of suggestedBooks">
+            <!-- <p>{{book.title}}</p> -->
+            <img
+            *ngIf="book.cover_id"
+              src="https://covers.openlibrary.org/b/id/{{ book.cover_id }}-L.jpg"
+              class="rowing largeposter"
+              alt=""
+              [routerLink]="['/book_details', book.key]"
+            />
+            <!--Add router link-->
+            <!-- <p>{{book.volumeInfo.imageLinks.thumbnail}}</p> -->
+            <!-- <p>{{book.volumeInfo.title}}</p> -->
+          </ng-container>
+        </div>
+      </div>
+</div>

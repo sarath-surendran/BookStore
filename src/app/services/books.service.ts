@@ -40,4 +40,14 @@ export class BooksService {
   // getMusic(): Observable<any>{
   //   return this.http.get(`${this.baseurl}?q=subject:music&key=${this.apiKey}`)
   // }
+
+  getBookDetails(key: string | null): Observable<any>{
+    // console.log(`${this.baseurl}${key}.json`); addition '/' after base url is the issue
+    
+    return this.http.get(`https://openlibrary.org${key}.json`)
+  }
+
+  getSuggestedBooks(key: string | null): Observable<any>{
+    return this.http.get(`https://openlibrary.org${key}/works.json?offset=10`)
+  }
 }
