@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BooksService } from 'src/app/services/books.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-book-details',
@@ -10,7 +11,8 @@ import { BooksService } from 'src/app/services/books.service';
 export class BookDetailsComponent implements OnInit{
   bookDetails: any = {}
   suggestedBooks: any[] = []
-  constructor(private bookService: BooksService, private router: ActivatedRoute){}
+  bookKey: string = ''
+  constructor(private bookService: BooksService, private router: ActivatedRoute, private cart: CartService){}
   // ngOnInit(): void {
   //   let key = this.router.snapshot.paramMap.get('key')
   //   console.log(key, "key#");
@@ -18,11 +20,16 @@ export class BookDetailsComponent implements OnInit{
     
     
   // }
+  isBookInCart: boolean = false
   ngOnInit(): void {
     this.router.params.subscribe(params => {
       let key = params['key'];
-      console.log(key, "key#");
+      this.bookKey = key
       this.getBookDetails(key);
+      let isBookInCart = this.cart.isBookInCart(this.bookKey)
+      this.isBookInCart = isBookInCart
+      console.log(isBookInCart, "isBookInCart##");
+      
     });
   }
   
@@ -51,4 +58,10 @@ export class BookDetailsComponent implements OnInit{
       }
     })
   }
+
+  addToCart(){
+    this.cart.addToCart(this.bookKey, 1)
+  }
+
+  
 }

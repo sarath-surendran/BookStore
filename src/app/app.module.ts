@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BookDetailsComponent } from './pages/book-details/book-details.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

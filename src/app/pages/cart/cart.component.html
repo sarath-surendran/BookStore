@@ -1,0 +1,169 @@
+<section class="h-100 h-custom mt-5" *ngIf="cart && cart.length > 0">
+    <div class="container h-100 py-5">
+      <div class="row  d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+  
+          <div class="table-responsive ">
+            <table class="table ">
+              <thead >
+                <tr>
+                  <th scope="col" class="h5">Shopping Bag</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let book of cart">
+                  <th scope="row " *ngIf="book.quantity > 0">
+                    <div class="d-flex align-items-center col-10">
+                      <img 
+                      src="https://covers.openlibrary.org/b/id/{{ book.cover }}-L.jpg" 
+                      class="img-fluid rounded-3"
+                        style="width: 120px;" alt="Book">
+                      <div class="flex-column ms-4">
+                        <p class="mb-2">{{book.title}}</p>
+                        <p class="mb-0">{{book.author}}</p>
+                      </div>
+                    </div>
+                  </th>
+                  
+                  <td class="align-middle" *ngIf="book.quantity > 0">
+                    <div class="d-flex flex-row align-items-center">
+                        <button (click)="minusQuantity(book.id)" class="btn px-2">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                      
+                        <input id="form1" min="0" name="quantity"  [(ngModel)]="book.quantity" type="number" class="form-control form-control-sm" style="width: 50px; height: 32px;" />
+                      
+                        <button (click)="addQuantity(book.id)" class="btn px-2">
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                      
+                  </td>
+                  <td class="align-middle" *ngIf="book.quantity > 0">
+                    <p class="mb-0" style="font-weight: 500;">{{book.price * book.quantity | currency:"INR"}}</p>
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+         <div class="d-flex">
+            <!-- <div class="col-2"></div> -->
+            <div class="col-12 card shadow-2-strong mb-5 mb-lg-0" style="border-radius: 16px;">
+                <div class="card-body p-4" >
+      
+                  <div class="row" >
+                    <div class="col-md-8 col-lg-8 col-xl-8 mb-4 mb-md-0" >
+                      <!-- <form>
+                        <div class="d-flex flex-row pb-3">
+                          <div class="d-flex align-items-center pe-2">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1v"
+                              value="" aria-label="..." checked />
+                          </div>
+                          <div class="rounded border w-100 p-3">
+                            <p class="d-flex align-items-center mb-0">
+                              <i class="fab fa-cc-mastercard fa-2x text-dark pe-2"></i>Credit
+                              Card
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row pb-3">
+                          <div class="d-flex align-items-center pe-2">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel2v"
+                              value="" aria-label="..." />
+                          </div>
+                          <div class="rounded border w-100 p-3">
+                            <p class="d-flex align-items-center mb-0">
+                              <i class="fab fa-cc-visa fa-2x fa-lg text-dark pe-2"></i>Debit Card
+                            </p>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row">
+                          <div class="d-flex align-items-center pe-2">
+                            <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel3v"
+                              value="" aria-label="..." />
+                          </div>
+                          <div class="rounded border w-100 p-3">
+                            <p class="d-flex align-items-center mb-0">
+                              <i class="fab fa-cc-paypal fa-2x fa-lg text-dark pe-2"></i>PayPal
+                            </p>
+                          </div>
+                        </div>
+                      </form> -->
+                    </div>
+                    <!-- <div class="col-md-6 col-lg-4 col-xl-6">
+                      <div class="row">
+                        <div class="col-12 col-xl-6">
+                          <div class="form-outline mb-4 mb-xl-5">
+                            <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                              placeholder="John Smith" />
+                            <label class="form-label" for="typeName">Name on card</label>
+                          </div>
+      
+                          <div class="form-outline mb-4 mb-xl-5">
+                            <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="MM/YY"
+                              size="7" id="exp" minlength="7" maxlength="7" />
+                            <label class="form-label" for="typeExp">Expiration</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-xl-6">
+                          <div class="form-outline mb-4 mb-xl-5">
+                            <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                              placeholder="1111 2222 3333 4444" minlength="19" maxlength="19" />
+                            <label class="form-label" for="typeText">Card Number</label>
+                          </div>
+      
+                          <div class="form-outline mb-4 mb-xl-5">
+                            <input type="password" id="typeText" class="form-control form-control-lg"
+                              placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                            <label class="form-label" for="typeText">Cvv</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+                    <div class="col-md-4 col-lg-4 col-xl-4">
+                        <div class="d-flex justify-content-between" style="font-weight: 500;">
+                          <p class="mb-2">Subtotal</p>
+                          <p  class="mb-2">{{total | currency: "INR"}}</p>
+                        </div>
+                      
+                        <div class="d-flex justify-content-between" style="font-weight: 500;">
+                          <p class="mb-0">Tax (18%)</p>
+                          <p class="mb-0">{{total*0.18 | currency:"INR"}}</p>
+                        </div>
+                      
+                        <hr class="my-4">
+                      
+                        <div class="d-flex justify-content-between mb-4" style="font-weight: 500;">
+                          <p class="mb-2">Total (tax included)</p>
+                          <p class="mb-2">{{ ((total * 0.18)+total) | currency:"INR" }}</p>
+
+
+                        </div>
+                      
+                        <button type="button" class="btn btn-primary btn-block btn-lg">
+                          <div class="d-flex justify-content-between">
+                            <span>Checkout</span>
+                            <span>$26.48</span>
+                          </div>
+                        </button>
+                      </div>
+                      
+                  </div>
+      
+                </div>
+              </div>
+      
+            </div>
+         </div>
+      </div>
+    </div>
+  </section>
+  <div *ngIf="!cart || cart.length === 0" class="d-flex justify-content-center align-items-center">
+    <div class="text-center">
+        <p>Your cart is empty.</p>
+    </div>
+</div>
+
