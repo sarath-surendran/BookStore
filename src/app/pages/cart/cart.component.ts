@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BooksService } from 'src/app/services/books.service';
 import { CartService } from 'src/app/services/cart.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +14,7 @@ export class CartComponent implements OnInit{
   storageCart:{[key: string]: number} ={}
   cart: any[] = []
   total: number = 0
-  constructor(private cartService: CartService, private bookService: BooksService){}
+  constructor(private cartService: CartService, private bookService: BooksService, private route: Router){}
 
   ngOnInit(): void {
     this.getCartItems()
@@ -67,10 +69,17 @@ export class CartComponent implements OnInit{
 
   }
 
-  calculateTotal() {
-    this.total = this.cart.reduce((sum, book) => sum + (book.price * book.quantity), 0);
-    console.log(this.total, "total##");
+  // calculateTotal() {
+  //   this.total = this.cart.reduce((sum, book) => sum + (book.price * book.quantity), 0);
+  //   console.log(this.total, "total##");
     
+  // }
+  checkOut(){
+    this.cartService.clearCart()
+    this.cart = []
+    alert("Your Books Will be Delivered Soon. Thank You for the purchase :)")
+    this.route.navigateByUrl('')
+
   }
   
  
